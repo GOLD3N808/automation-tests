@@ -2,6 +2,9 @@ stages:
   - check_system
 
 checking system job:
+ rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: never
  stage: check_system
  script:
    - python3 -m platform platform.system
