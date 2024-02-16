@@ -1,0 +1,7 @@
+stages:
+  - check_system
+
+checking system job:
+ stage: check_system
+ script:
+   - python3 -m platform platform.system
