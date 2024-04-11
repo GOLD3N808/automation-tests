@@ -1,7 +1,12 @@
 import {test} from '@pages/fixtures/testBase'
 import { user } from '@helpers/loginCredentials'
+import { expect } from '@playwright/test'
 
 test.describe('Login to account using valid and invalid data', () => {
+
+test.beforeAll(async ({ page }) => {
+    await page.goto('https://www.saucedemo.com/')
+    })
 
 test('Login with empty username and password filds', async ({ loginPage}) => {
     await loginPage.login('', '')
