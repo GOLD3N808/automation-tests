@@ -4,5 +4,5 @@ type Login = {
 
 export const user: Login = {
     correctUsername: 'standard_user',
-    incorrectUsername: 'incorrectUsername'
+    incorrectUsername: 'incorrectUsername',
 }
