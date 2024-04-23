@@ -6,13 +6,15 @@ class DashboardPage {
     usernameField: Locator
     passwordField: Locator
     logoutLink: Locator
-    mainDashboardContainer: Locator
+    //mainDashboardContainer: Locator
+    burgerMenuButton: Locator
 
 constructor(page: Page){
 this.page = page
 this.userMenu = page.locator('#react-burger-menu-btn')
 this.logoutLink = page.locator('#logout_sidebar_link')
-this.mainDashboardContainer = page.locator('#inventory_container')
+//this.mainDashboardContainer = page.locator('#inventory_container')
+this.burgerMenuButton = page.locator('#react-burger-menu-btn')
 }
 
 

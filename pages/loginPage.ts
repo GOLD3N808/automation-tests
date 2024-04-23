@@ -22,11 +22,12 @@ this.errorMessageBadCredentials = page.getByText('Epic sadface: Username and pas
 }
 
 
-async login(username: string, password: string){   
-    this.usernameField.type(username)
-    this.passwordField.fill(password) 
-    this.loginButton.click()
+async login(username: string, password: string) {   
+    await this.usernameField.fill(username);
+    await this.passwordField.fill(password);
+    await this.loginButton.click();
 }
+
 
 }
 export default LoginPage
