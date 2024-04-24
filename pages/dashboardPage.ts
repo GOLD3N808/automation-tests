@@ -1,4 +1,5 @@
 import { Locator, Page } from '@playwright/test'
+import internal = require('stream')
 
 class DashboardPage {
     page: Page
@@ -16,7 +17,7 @@ this.cartIcon = page.locator('#shopping_cart_container')
 this.dashboardContainer = page.locator('[data-test="inventory-container"]')
 }
 
-private addToCartButton(numberOfProduct){
+addToCartButton(numberOfProduct){
     return this.page.locator('[data-test="inventory-item"]').nth(numberOfProduct).getByText('Add to cart')
 }
 
@@ -34,6 +35,10 @@ async addProduct(numberOfProduct){
 
 async goToCart(){
     await this.cartIcon.click()
+}
+
+async removeProduct(numberOfProduct){
+    await this.removeButton(numberOfProduct).click()
 }
 
 async logout(){   

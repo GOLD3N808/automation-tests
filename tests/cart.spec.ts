@@ -29,8 +29,24 @@ test('Add products to cart', async ({ dashboardPage, cartPage, page }) => {
     await expect(cartPage.productElement).toHaveCount(2)
 });
 
-test('Remove products from cart ', async ({ page }) => {
-
+test('Remove products from cart ', async ({ dashboardPage, cartPage, page }) => {
+    await dashboardPage.addProduct(0)
+    await dashboardPage.addProduct(1)
+    await dashboardPage.goToCart()
+    await expect(cartPage.cartContainer).toBeVisible()
+    await cartPage.removeProduct(0)
+    await expect(cartPage.productElement).toHaveCount(1)
+    await expect(dashboardPage.redlightedNumberOfCart('1')).toBeVisible()
+    await cartPage.backToDashboard()
+    expect(page.url()).toBe('https://www.saucedemo.com/inventory.html')
+    await expect(dashboardPage.dashboardContainer).toBeVisible()
+    await dashboardPage.removeProduct(1)
+    await expect(dashboardPage.redlightedNumberOfCart('1')).toBeHidden()
+    await expect(dashboardPage.removeButton(1)).toBeHidden()
+    await expect(dashboardPage.addToCartButton(1)).toBeVisible()
+    await dashboardPage.goToCart()
+    await expect(cartPage.cartContainer).toBeVisible()
+    await expect(cartPage.productElement).toBeHidden()
 });
 
 })
