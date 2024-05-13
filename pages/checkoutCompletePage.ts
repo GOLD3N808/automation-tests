@@ -13,5 +13,9 @@ this.summaryOrderInformation = page.locator('[data-test="complete-header"]').get
 this.backHomeButton = page.locator('#back-to-products')
 }
 
+async backHome() {   
+    await this.backHomeButton.click()
+}
+
 }
 export default CheckoutCompletePage

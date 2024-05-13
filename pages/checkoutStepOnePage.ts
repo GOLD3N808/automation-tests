@@ -8,6 +8,7 @@ class CheckoutStepOnePage {
     lastNameField: Locator
     zipPostalCodeField: Locator
     cancelButton: Locator
+    error: Locator
 
 constructor(page: Page){
 this.page = page
@@ -17,6 +18,21 @@ this.firstNameField = page.locator('[data-test="firstName"]')
 this.lastNameField = page.locator('[data-test="lastName"]')
 this.zipPostalCodeField = page.locator('[data-test="postalCode"]')
 this.cancelButton = page.locator('#cancel')
+this.error = page.locator('[data-test="error"]')
+}
+
+async enterCustomerData(firstname: string, lastname: string, zipPostalCode: string) {   
+    await this.firstNameField.fill(firstname)
+    await this.lastNameField.fill(lastname)
+    await this.zipPostalCodeField.fill(zipPostalCode)
+}
+
+async goToNextStepOfCheckout() {   
+    await this.continueButton.click()
+}
+
+async backToCart() {   
+    await this.cancelButton.click()
 }
 
 }

@@ -32,5 +32,9 @@ async removeProduct(numberOfProductInCart) {
     await this.removeButton(numberOfProductInCart).click()
 }
 
+async goToCheckout() {
+    await this.checkoutButton.click()
+}
+
 }
 export default CartPage
