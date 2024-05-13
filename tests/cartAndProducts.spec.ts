@@ -49,10 +49,32 @@ test('Remove products from cart ', async ({ dashboardPage, cartPage, page }) => 
     await expect(cartPage.productElement).toBeHidden()
 });
 
-test('Remove products from product view ', async ({ dashboardPage, cartPage, page }) => {
+test('Remove products from product view ', async ({ dashboardPage, productsDetailsPage, page }) => {
     await dashboardPage.addProduct(0)
     await dashboardPage.addProduct(1)
     
+    await dashboardPage.goToProductDetails(0)
+    await expect(productsDetailsPage.backToProductsLink).toBeVisible()
+    await productsDetailsPage.removeProduct()
+    await expect(productsDetailsPage.removeButton).toBeHidden()
+    await expect(productsDetailsPage.addToCartButton).toBeVisible()
+    await expect(productsDetailsPage.redlightedNumberOfCart('1')).toBeVisible()
+    await productsDetailsPage.backToProducts()
+    expect(page.url()).toBe('https://www.saucedemo.com/inventory.html')
+    await expect(dashboardPage.dashboardContainer).toBeVisible()
+    await expect(dashboardPage.removeButton(0)).toBeHidden()
+    await expect(dashboardPage.addToCartButton(0)).toBeVisible()
+
+    await dashboardPage.goToProductDetails(1)
+    await expect(productsDetailsPage.backToProductsLink).toBeVisible()
+    await productsDetailsPage.removeProduct()
+    await expect(productsDetailsPage.removeButton).toBeHidden()
+    await expect(productsDetailsPage.addToCartButton).toBeVisible()
+    await expect(productsDetailsPage.redlightedNumberOfCart('1')).toBeHidden()
+    await productsDetailsPage.backToProducts()
+    expect(page.url()).toBe('https://www.saucedemo.com/inventory.html')
+    await expect(dashboardPage.dashboardContainer).toBeVisible()
+    await expect(dashboardPage.removeButton(1)).toBeHidden()
 });
 
 })

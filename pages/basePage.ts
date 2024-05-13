@@ -19,6 +19,10 @@ this.aboutLink = page.locator('#about_sidebar_link')
 this.resetAppStateLink = page.locator('#reset_sidebar_link')
 }
 
+redlightedNumberOfCart(quantityOfRedlightedNumbers: string){
+    return this.page.locator('[data-test="shopping-cart-badge"]').getByText(quantityOfRedlightedNumbers)
+}
+
 async logout(){   
     await this.burgerMenuButton.click();
     await this.logoutLink.click();

@@ -6,6 +6,7 @@ import CartPage from '@pages/cartPage'
 import CheckoutCompletePage from '@pages/checkoutCompletePage'
 import CheckoutStepOnePage from '@pages/checkoutStepOnePage'
 import CheckoutStepTwoPage from '@pages/CheckoutStepTwoPage'
+import ProductsDetailsPage from '@pages/productDetailsPage'
 
 export const test = base.extend<{
     basePage: BasePage
@@ -15,6 +16,7 @@ export const test = base.extend<{
     checkoutCompletePage: CheckoutCompletePage
     checkoutStepOnePage: CheckoutStepOnePage
     checkoutStepTwoPage: CheckoutStepTwoPage
+    productsDetailsPage: ProductsDetailsPage
     
 }>({
     basePage: async ({ page }, use) => {
@@ -37,5 +39,8 @@ export const test = base.extend<{
     },
     checkoutStepTwoPage: async ({ page }, use) => {
         await use(new CheckoutStepTwoPage(page))
+    },
+    productsDetailsPage: async ({ page }, use) => {
+        await use(new ProductsDetailsPage(page))
     },
 })
