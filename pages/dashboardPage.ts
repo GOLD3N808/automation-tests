@@ -1,5 +1,4 @@
 import { Locator, Page } from '@playwright/test'
-import internal = require('stream')
 
 class DashboardPage {
     page: Page
