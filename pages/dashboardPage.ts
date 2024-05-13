@@ -28,18 +28,11 @@ async addProduct(numberOfProduct){
     await this.addToCartButton(numberOfProduct).click()
 }
 
-async goToCart(){
-    await this.cartIcon.click()
-}
-
 async removeProduct(numberOfProduct){
     await this.removeButton(numberOfProduct).click()
 }
 
-async logout(){   
-    await this.burgerMenuButton.click();
-    await this.logoutLink.click();
-}
+
 
 }
 export default DashboardPage
