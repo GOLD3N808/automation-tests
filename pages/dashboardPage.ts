@@ -32,7 +32,5 @@ async removeProduct(numberOfProduct){
     await this.removeButton(numberOfProduct).click()
 }
 
-
-
 }
 export default DashboardPage

@@ -49,4 +49,10 @@ test('Remove products from cart ', async ({ dashboardPage, cartPage, page }) => 
     await expect(cartPage.productElement).toBeHidden()
 });
 
+test('Remove products from product view ', async ({ dashboardPage, cartPage, page }) => {
+    await dashboardPage.addProduct(0)
+    await dashboardPage.addProduct(1)
+    
+});
+
 })
