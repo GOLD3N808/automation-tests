@@ -15,4 +15,11 @@ test('Logout from dashboard page', async ({ dashboardPage, page, loginPage }) =>
     await expect(loginPage.loginButton).toBeVisible()
 });
 
+test('Logout from cart page', async ({ dashboardPage, cartPage, page, loginPage }) => {
+    await dashboardPage.goToCart()
+    await cartPage.logout()
+    expect(page.url()).toBe('https://www.saucedemo.com/')
+    await expect(loginPage.loginButton).toBeVisible()
+});
+
 })

@@ -1,7 +1,7 @@
 import { Locator, Page } from '@playwright/test'
-import { runInThisContext } from 'vm'
+import BasePage from '@pages/basePage'
 
-class CartPage {
+class CartPage extends BasePage {
     page: Page
     yourCartTitle: Locator
     productElement: Locator
@@ -10,6 +10,7 @@ class CartPage {
     numberOfProductInCart: number
 
 constructor(page: Page){
+super(page)
 this.page = page
 this.yourCartTitle = page.locator('[data-test="title"]').getByText('Your Cart')
 this.productElement = page.locator('[data-test="inventory-item"]')

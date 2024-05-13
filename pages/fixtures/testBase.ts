@@ -1,4 +1,5 @@
 import { test as base } from '@playwright/test'
+import BasePage from '@pages/basePage'
 import LoginPage from '@pages/loginPage'
 import DashboardPage from '@pages/dashboardPage'
 import CartPage from '@pages/cartPage'
@@ -7,6 +8,7 @@ import CheckoutStepOnePage from '@pages/checkoutStepOnePage'
 import CheckoutStepTwoPage from '@pages/CheckoutStepTwoPage'
 
 export const test = base.extend<{
+    basePage: BasePage
     loginPage: LoginPage
     dashboardPage: DashboardPage
     cartPage: CartPage
@@ -15,6 +17,9 @@ export const test = base.extend<{
     checkoutStepTwoPage: CheckoutStepTwoPage
     
 }>({
+    basePage: async ({ page }, use) => {
+        await use(new BasePage(page))
+    },
     loginPage: async ({ page }, use) => {
         await use(new LoginPage(page))
     },
