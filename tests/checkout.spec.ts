@@ -1,9 +1,6 @@
 import {test} from '@pages/fixtures/testBase'
 import { user } from '@helpers/loginCredentials'
 import { expect } from '@playwright/test'
-import CheckoutStepOnePage from '@pages/checkoutStepOnePage'
-import CheckoutCompletePage from '@pages/checkoutCompletePage'
-import DashboardPage from '@pages/dashboardPage'
 
 test.describe('tests of buying products from cart, and finalize checkout', () => {
 
