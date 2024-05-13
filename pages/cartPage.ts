@@ -21,7 +21,7 @@ this.checkoutButton = page.locator('#checkout')
 }
 
 private removeButton(numberOfProductInCart){
-    return this.productElement.nth(numberOfProductInCart).getByText('Remove')
+    return this.productElement.nth(numberOfProductInCart - 1).getByText('Remove')
 }
 
 async backToDashboard() {

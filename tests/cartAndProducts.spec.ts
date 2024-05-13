@@ -10,8 +10,8 @@ test.beforeEach(async ({ loginPage, page }) => {
 })
 
 test('Add products to cart', async ({ dashboardPage, cartPage, page }) => {
-    await dashboardPage.addProduct(0)
-    await expect(dashboardPage.removeButton(0)).toBeVisible()
+    await dashboardPage.addProduct(1)
+    await expect(dashboardPage.removeButton(1)).toBeVisible()
     await expect(dashboardPage.redlightedNumberOfCart('1')).toBeVisible()
     await dashboardPage.goToCart()
     await expect(cartPage.yourCartTitle).toBeVisible()
@@ -20,8 +20,8 @@ test('Add products to cart', async ({ dashboardPage, cartPage, page }) => {
     await cartPage.backToDashboard()
     expect(page.url()).toBe('https://www.saucedemo.com/inventory.html')
     await expect(dashboardPage.dashboardContainer).toBeVisible()
-    await dashboardPage.addProduct(1)
-    await expect(dashboardPage.removeButton(1)).toBeVisible()
+    await dashboardPage.addProduct(2)
+    await expect(dashboardPage.removeButton(2)).toBeVisible()
     await expect(dashboardPage.redlightedNumberOfCart('2')).toBeVisible()
     await dashboardPage.goToCart()
     await expect(cartPage.yourCartTitle).toBeVisible()
@@ -30,30 +30,30 @@ test('Add products to cart', async ({ dashboardPage, cartPage, page }) => {
 });
 
 test('Remove products from cart ', async ({ dashboardPage, cartPage, page }) => {
-    await dashboardPage.addProduct(0)
     await dashboardPage.addProduct(1)
+    await dashboardPage.addProduct(2)
     await dashboardPage.goToCart()
     await expect(cartPage.cartContainer).toBeVisible()
-    await cartPage.removeProduct(0)
+    await cartPage.removeProduct(1)
     await expect(cartPage.productElement).toHaveCount(1)
     await expect(dashboardPage.redlightedNumberOfCart('1')).toBeVisible()
     await cartPage.backToDashboard()
     expect(page.url()).toBe('https://www.saucedemo.com/inventory.html')
     await expect(dashboardPage.dashboardContainer).toBeVisible()
-    await dashboardPage.removeProduct(1)
+    await dashboardPage.removeProduct(2)
     await expect(dashboardPage.redlightedNumberOfCart('1')).toBeHidden()
-    await expect(dashboardPage.removeButton(1)).toBeHidden()
-    await expect(dashboardPage.addToCartButton(1)).toBeVisible()
+    await expect(dashboardPage.removeButton(2)).toBeHidden()
+    await expect(dashboardPage.addToCartButton(2)).toBeVisible()
     await dashboardPage.goToCart()
     await expect(cartPage.cartContainer).toBeVisible()
     await expect(cartPage.productElement).toBeHidden()
 });
 
 test('Remove products from product view ', async ({ dashboardPage, productsDetailsPage, page }) => {
-    await dashboardPage.addProduct(0)
     await dashboardPage.addProduct(1)
+    await dashboardPage.addProduct(2)
     
-    await dashboardPage.goToProductDetails(0)
+    await dashboardPage.goToProductDetails(1)
     await expect(productsDetailsPage.backToProductsLink).toBeVisible()
     await productsDetailsPage.removeProduct()
     await expect(productsDetailsPage.removeButton).toBeHidden()
@@ -62,10 +62,10 @@ test('Remove products from product view ', async ({ dashboardPage, productsDetai
     await productsDetailsPage.backToProducts()
     expect(page.url()).toBe('https://www.saucedemo.com/inventory.html')
     await expect(dashboardPage.dashboardContainer).toBeVisible()
-    await expect(dashboardPage.removeButton(0)).toBeHidden()
-    await expect(dashboardPage.addToCartButton(0)).toBeVisible()
+    await expect(dashboardPage.removeButton(1)).toBeHidden()
+    await expect(dashboardPage.addToCartButton(1)).toBeVisible()
 
-    await dashboardPage.goToProductDetails(1)
+    await dashboardPage.goToProductDetails(2)
     await expect(productsDetailsPage.backToProductsLink).toBeVisible()
     await productsDetailsPage.removeProduct()
     await expect(productsDetailsPage.removeButton).toBeHidden()
@@ -74,7 +74,7 @@ test('Remove products from product view ', async ({ dashboardPage, productsDetai
     await productsDetailsPage.backToProducts()
     expect(page.url()).toBe('https://www.saucedemo.com/inventory.html')
     await expect(dashboardPage.dashboardContainer).toBeVisible()
-    await expect(dashboardPage.removeButton(1)).toBeHidden()
+    await expect(dashboardPage.removeButton(2)).toBeHidden()
 });
 
 })

@@ -10,19 +10,18 @@ constructor(page: Page){
 super(page)
 this.page = page
 this.dashboardContainer = page.locator('[data-test="inventory-container"]')
-//
 }
 
 addToCartButton(numberOfProduct){
-    return this.page.locator('[data-test="inventory-item"]').nth(numberOfProduct).getByText('Add to cart')
+    return this.page.locator('[data-test="inventory-item"]').nth(numberOfProduct - 1).getByText('Add to cart')
 }
 
 removeButton(numberOfProduct){
-    return this.page.locator('[data-test="inventory-item"]').nth(numberOfProduct).getByText('Remove')
+    return this.page.locator('[data-test="inventory-item"]').nth(numberOfProduct - 1).getByText('Remove')
 }
 
 productLink(numberOfProduct){
-    return this.page.locator('[data-test="inventory-item-name"]').nth(numberOfProduct)
+    return this.page.locator('[data-test="inventory-item-name"]').nth(numberOfProduct - 1)
 }
 
 
