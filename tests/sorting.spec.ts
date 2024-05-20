@@ -9,8 +9,12 @@ test.beforeEach(async ({ loginPage, page }) => {
     await loginPage.login(user['correctUsername'], process.env.CORRECT_PASSWORD)
 })
 
-test('Choose all options of sort', async ({ page }) => {
+test('Choose all options of sort', async ({ page, dashboardPage }) => {
 
-});
+    expect(await dashboardPage.sortByAtoZ()).toBe(true)
+    expect(await dashboardPage.sortByZtoA()).toBe(true)
+    expect(await dashboardPage.sortByPriceAsc()).toBe(true)
+    expect(await dashboardPage.sortByPriceDesc()).toBe(true)
+})
 
 })
