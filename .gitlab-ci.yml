@@ -7,7 +7,7 @@ add password variables:
   script:
    - export CORRECT_PASSWORD=secret_sauce
    - export INCORRECT_PASSWORD=incorrectPassword
- rules:
+  rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "trigger"
       allow_failure: false
 
@@ -15,7 +15,7 @@ run tests:
   stage: run_tests
   script:
    - yarn playwright test
- rules:
+  rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "trigger"
       allow_failure: true
 
