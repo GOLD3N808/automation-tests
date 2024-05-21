@@ -1,22 +1,26 @@
-stages:
-  - add_password_variables
-  - run_tests
+image: mcr.microsoft.com/playwright:focal
 
-add_password_variables:
-  stage: add_password_variables
+stages:
+  - install
+  - test
+
+install_dependencies:
+  stage: install
   script:
-   - export CORRECT_PASSWORD=secret_sauce
-   - export INCORRECT_PASSWORD=incorrectPassword
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "trigger"
-      allow_failure: false
+    - npm install
 
 run_tests:
-  stage: run_tests
+  stage: test
   script:
-   - npm install --global yarn
-   - yarn playwright test
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "trigger"
-      allow_failure: true
+    - npm install @playwright/test 
+    - npx playwright install
+    - export INCORRECT_PASSWORD=incorrectPassword
+    - export CORRECT_PASSWORD=secret_sauce
+    - npx playwright test
+  artifacts:
+    when: always
+    reports:
+      junit: results.xml
+    paths:
+      - test-results/
 
