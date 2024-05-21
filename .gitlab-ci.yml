@@ -16,7 +16,6 @@ install_dependencies:
 run_tests:
   stage: test
   script:
-    - npx playwright install --with-deps
     - export CORRECT_PASSWORD=secret_sauce
     - export INCORRECT_PASSWORD=incorrectPassword
     - npx playwright test
