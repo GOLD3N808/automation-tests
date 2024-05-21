@@ -66,7 +66,7 @@ test('Buy products - back to cart', async ({ cartPage, page, checkoutStepOnePage
 
 test.describe('test of checkout with empty cart', () => {
 
-test.only('Checkout with empty cart', async ({ page, loginPage, dashboardPage, cartPage }) => {
+test('Checkout with empty cart', async ({ page, loginPage, dashboardPage, cartPage }) => {
     await page.goto('https://www.saucedemo.com/')
     await loginPage.login(user['correctUsername'], process.env.CORRECT_PASSWORD)
     await dashboardPage.goToCart()
