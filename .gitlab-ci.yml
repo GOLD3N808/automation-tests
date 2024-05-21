@@ -12,6 +12,7 @@ install_dependencies:
 run_tests:
   stage: test
   script:
+    - npm install @playwright/test 
     - npx playwright install
     - export INCORRECT_PASSWORD=incorrectPassword
     - export CORRECT_PASSWORD=secret_sauce
