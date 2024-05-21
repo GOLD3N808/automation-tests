@@ -30,6 +30,7 @@ test('Go to Reset App State', async ({ dashboardPage, cartPage }) => {
     await dashboardPage.goToCart()
     await cartPage.resetAppState()
     await expect.soft(cartPage.productElement).toBeHidden()
+    await cartPage.closeBurgerMenu()
     await cartPage.backToDashboard()
     await expect(dashboardPage.dashboardContainer).toBeVisible()
     await expect(dashboardPage.removeButton(1)).toBeHidden()

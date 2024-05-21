@@ -33,9 +33,9 @@ test('Buy products - happy path', async ({ page, checkoutStepOnePage, checkoutSt
 test('Buy products - unhappy path invalid zip code', async ({ page, checkoutStepOnePage }) => {
     await checkoutStepOnePage.enterCustomerData('firstname', 'lastname', 'qwerty')
     await checkoutStepOnePage.goToNextStepOfCheckout()
-    expect(page.url()).toBe('https://www.saucedemo.com/checkout-step-one.html')
-    await expect(checkoutStepOnePage.checkoutTitle).toBeVisible()
-    await expect(checkoutStepOnePage.error).toBeVisible()
+    expect.soft(page.url()).toBe('https://www.saucedemo.com/checkout-step-one.html')
+    await expect.soft(checkoutStepOnePage.checkoutTitle).toBeVisible()
+    await expect.soft(checkoutStepOnePage.error).toBeVisible()
 });
 
 test('Buy products - unhappy path - empty customer information fields', async ({ page, checkoutStepOnePage }) => {
@@ -52,8 +52,8 @@ test('Buy products - back to change client information', async ({ page, checkout
     await expect(checkoutStepTwoPage.checkoutOverviewTitle).toBeVisible()
     await expect(checkoutStepTwoPage.productElement).toHaveCount(2)
     await checkoutStepTwoPage.backToFirstStep()
-    expect(page.url()).toBe('https://www.saucedemo.com/checkout-step-one.html')
-    await expect(checkoutStepOnePage.checkoutTitle).toBeVisible()
+    expect.soft(page.url()).toBe('https://www.saucedemo.com/checkout-step-one.html')
+    await expect.soft(checkoutStepOnePage.checkoutTitle).toBeVisible()
 });
 
 test('Buy products - back to cart', async ({ cartPage, page, checkoutStepOnePage }) => {
@@ -66,12 +66,12 @@ test('Buy products - back to cart', async ({ cartPage, page, checkoutStepOnePage
 
 test.describe('test of checkout with empty cart', () => {
 
-test('Checkout with empty cart', async ({ page, loginPage, dashboardPage, cartPage }) => {
+test.only('Checkout with empty cart', async ({ page, loginPage, dashboardPage, cartPage }) => {
     await page.goto('https://www.saucedemo.com/')
     await loginPage.login(user['correctUsername'], process.env.CORRECT_PASSWORD)
     await dashboardPage.goToCart()
     await cartPage.goToCheckout()
-    expect(page.url()).toBe('https://www.saucedemo.com/cart.html')
+    expect.soft(page.url()).toBe('https://www.saucedemo.com/cart.html')
 });
 
 })

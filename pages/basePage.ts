@@ -8,6 +8,7 @@ class BasePage {
     allItemsLink: Locator
     aboutLink: Locator
     resetAppStateLink: Locator
+    closeBurgerMenuButton: Locator
 
 constructor(page: Page){
 this.page = page
@@ -17,6 +18,7 @@ this.cartIcon = page.locator('#shopping_cart_container')
 this.allItemsLink = page.locator('#inventory_sidebar_link')
 this.aboutLink = page.locator('#about_sidebar_link')
 this.resetAppStateLink = page.locator('#reset_sidebar_link')
+this.closeBurgerMenuButton = page.locator('#react-burger-cross-btn')
 }
 
 redlightedNumberOfCart(quantityOfRedlightedNumbers: string){
@@ -45,6 +47,10 @@ async goToAboutLink(){
 async resetAppState(){
     await this.burgerMenuButton.click()
     await this.resetAppStateLink.click()
+}
+
+async closeBurgerMenu(){
+    await this.closeBurgerMenuButton.click()
 }
 
 }
