@@ -14,6 +14,7 @@ add_password_variables:
 run_tests:
   stage: run_tests
   script:
+   - apt-get install sudo
    - sudo npm i -g npx
    - npx playwright test
   # rules:
