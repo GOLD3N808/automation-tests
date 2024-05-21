@@ -14,6 +14,7 @@ add_password_variables:
 run_tests:
   stage: run_tests
   script:
+   - yarn install
    - yarn playwright test
   # rules:
   #   - if: $CI_PIPELINE_SOURCE == "trigger"
