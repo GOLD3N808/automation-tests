@@ -14,8 +14,7 @@ add_password_variables:
 run_tests:
   stage: run_tests
   script:
-   - npm install --global yarn
-   - yarn playwright test
+   - npx playwright test
   # rules:
   #   - if: $CI_PIPELINE_SOURCE == "trigger"
   #     allow_failure: true
