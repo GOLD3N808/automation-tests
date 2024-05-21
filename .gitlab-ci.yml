@@ -1,10 +1,21 @@
 stages:
-  - check_system
+  - add_password_variables
+  - run_tests
 
-checking system job:
+add password variables:
+  stage: add_password_variables
+  script:
+   - export CORRECT_PASSWORD=secret_sauce
+   - export INCORRECT_PASSWORD=incorrectPassword
  rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-      when: never
- stage: check_system
- script:
-   - python3 -m platform platform.system
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "trigger"
+      allow_failure: false
+
+run tests:
+  stage: run_tests
+  script:
+   - yarn playwright test
+ rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "trigger"
+      allow_failure: true
+
