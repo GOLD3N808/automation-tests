@@ -1,23 +1,28 @@
-stages:
-  - add_password_variables
-  - run_tests
+image: node:16
 
-add_password_variables:
-  stage: add_password_variables
+stages:
+  - install
+  - test
+
+cache:
+  paths:
+    - node_modules/
+
+install_dependencies:
+  stage: install
   script:
-   - export CORRECT_PASSWORD=secret_sauce
-   - export INCORRECT_PASSWORD=incorrectPassword
-  # rules:
-  #   - if: $CI_PIPELINE_SOURCE == "triggerr"
-  #     allow_failure: false
+    - npm install
 
 run_tests:
-  stage: run_tests
+  stage: test
   script:
-   - apt-get install sudo
-   - sudo npm i -g npx
-   - npx playwright test
-  # rules:
-  #   - if: $CI_PIPELINE_SOURCE == "trigger"
-  #     allow_failure: true
-
+    - npx playwright install --with-deps
+    - export CORRECT_PASSWORD=secret_sauce
+    - export INCORRECT_PASSWORD=incorrectPassword
+    - npx playwright test
+  artifacts:
+    when: always
+    reports:
+      junit: results.xml
+    paths:
+      - test-results/
