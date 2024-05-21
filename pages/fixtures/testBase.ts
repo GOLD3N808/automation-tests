@@ -5,7 +5,7 @@ import DashboardPage from '@pages/dashboardPage'
 import CartPage from '@pages/cartPage'
 import CheckoutCompletePage from '@pages/checkoutCompletePage'
 import CheckoutStepOnePage from '@pages/checkoutStepOnePage'
-import CheckoutStepTwoPage from '@pages/CheckoutStepTwoPage'
+import CheckoutStepTwoPage from '@pages/checkoutStepTwoPage'
 import ProductsDetailsPage from '@pages/productDetailsPage'
 
 export const test = base.extend<{
