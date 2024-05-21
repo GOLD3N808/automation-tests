@@ -7,15 +7,15 @@ add_password_variables:
   script:
    - export CORRECT_PASSWORD=secret_sauce
    - export INCORRECT_PASSWORD=incorrectPassword
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "trigger"
-      allow_failure: false
+  # rules:
+  #   - if: $CI_PIPELINE_SOURCE == "triggerr"
+  #     allow_failure: false
 
 run_tests:
   stage: run_tests
   script:
    - yarn playwright test
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "trigger"
-      allow_failure: true
+  # rules:
+  #   - if: $CI_PIPELINE_SOURCE == "trigger"
+  #     allow_failure: true
 
