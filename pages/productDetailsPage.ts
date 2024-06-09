@@ -10,9 +10,9 @@ class ProductsDetailsPage extends BasePage {
 constructor(page: Page){
 super(page)
 this.page = page
-this.removeButton = page.locator('#remove')
-this.addToCartButton = page.locator('#add-to-cart')
-this.backToProductsLink = page.locator('#back-to-products')
+this.removeButton = page.locator('[data-test="remove"]')
+this.addToCartButton = page.locator('[data-test="add-to-cart"]')
+this.backToProductsLink = page.locator('[data-test="back-to-products"]')
 }
 
 async removeProduct() {   

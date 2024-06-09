@@ -10,8 +10,8 @@ class CheckoutStepTwoPage {
 constructor(page: Page){
 this.page = page
 this.checkoutOverviewTitle = page.locator('[data-test="title"]').getByText('Checkout: Overview')
-this.cancelButton = page.locator('#cancel')
-this.finishButton = page.locator('#finish')
+this.cancelButton = page.locator('[data-test="cancel"]')
+this.finishButton = page.locator('[data-test="finish"]')
 this.productElement = page.locator('[data-test="inventory-item"]')
 }
 

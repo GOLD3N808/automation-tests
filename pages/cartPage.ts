@@ -15,9 +15,9 @@ super(page)
 this.page = page
 this.yourCartTitle = page.locator('[data-test="title"]').getByText('Your Cart')
 this.productElement = page.locator('[data-test="inventory-item"]')
-this.continueShoppingButton = page.locator('#continue-shopping')
+this.continueShoppingButton = page.locator('[data-test="continue-shopping"]')
 this.cartContainer = page.locator('[data-test="cart-contents-container"]')
-this.checkoutButton = page.locator('#checkout')
+this.checkoutButton = page.locator('[data-test="checkout"]')
 }
 
 private removeButton(numberOfProductInCart){

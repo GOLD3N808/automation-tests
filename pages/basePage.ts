@@ -13,11 +13,11 @@ class BasePage {
 constructor(page: Page){
 this.page = page
 this.burgerMenuButton = page.locator('#react-burger-menu-btn')
-this.logoutLink = page.locator('#logout_sidebar_link')
-this.cartIcon = page.locator('#shopping_cart_container')
-this.allItemsLink = page.locator('#inventory_sidebar_link')
-this.aboutLink = page.locator('#about_sidebar_link')
-this.resetAppStateLink = page.locator('#reset_sidebar_link')
+this.logoutLink = page.locator('[data-test="logout-sidebar-link"]')
+this.cartIcon = page.locator('[data-test="shopping-cart-link"]')
+this.allItemsLink = page.locator('[data-test="inventory-sidebar-link"]')
+this.aboutLink = page.locator('[data-test="about-sidebar-link"]')
+this.resetAppStateLink = page.locator('[data-test="reset-sidebar-link"]')
 this.closeBurgerMenuButton = page.locator('#react-burger-cross-btn')
 }
 
@@ -26,8 +26,8 @@ redlightedNumberOfCart(quantityOfRedlightedNumbers: string){
 }
 
 async logout(){   
-    await this.burgerMenuButton.click();
-    await this.logoutLink.click();
+    await this.burgerMenuButton.click()
+    await this.logoutLink.click()
 }
 
 async goToCart(){

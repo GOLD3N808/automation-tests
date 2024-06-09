@@ -12,12 +12,12 @@ class CheckoutStepOnePage {
 
 constructor(page: Page){
 this.page = page
-this.continueButton = page.locator('#continue')
+this.continueButton = page.locator('[data-test="continue"]')
 this.checkoutTitle = page.locator('[data-test="title"]').getByText('Checkout: Your Information')
 this.firstNameField = page.locator('[data-test="firstName"]')
 this.lastNameField = page.locator('[data-test="lastName"]')
 this.zipPostalCodeField = page.locator('[data-test="postalCode"]')
-this.cancelButton = page.locator('#cancel')
+this.cancelButton = page.locator('[data-test="cancel"]')
 this.error = page.locator('[data-test="error"]')
 }
 

@@ -12,9 +12,9 @@ class LoginPage {
 
 constructor(page: Page){
 this.page = page
-this.loginButton = page.locator('#login-button')
-this.usernameField = page.locator('#user-name')
-this.passwordField = page.locator('#password')
+this.loginButton = page.locator('[data-test="login-button"]')
+this.usernameField = page.locator('[data-test="username"]')
+this.passwordField = page.locator('[data-test="password"]')
 this.redLightedUsernameField = page.locator('#user-name.input_error.form_input.error')
 this.redLightedPasswordField = page.locator('#password.input_error.form_input.error')
 this.errorMessageEmptyFields = page.getByText('Epic sadface: Username is required')
