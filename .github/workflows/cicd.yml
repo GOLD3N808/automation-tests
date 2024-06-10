@@ -1,0 +1,10 @@
+name: Check Runner
+
+on: push
+
+jobs:
+  check-runner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check runner name
+        run: echo "This job is running on xd"
