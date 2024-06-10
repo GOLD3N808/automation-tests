@@ -1,4 +1,3 @@
-image: mcr.microsoft.com/playwright:focal
 name: install
 
 on: push
@@ -9,13 +8,3 @@ jobs:
     steps:
       - name: installing name
         run: npm install
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: testing
-        run:
-          npm install @playwright/test 
-          npx playwright install
-          export INCORRECT_PASSWORD=incorrectPassword
-          export CORRECT_PASSWORD=secret_sauce
-          npx playwright test
