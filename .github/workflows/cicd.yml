@@ -31,10 +31,13 @@ jobs:
       run: npx playwright install
 
     - name: export incorrect password
-      run: export INCORRECT_PASSWORD=incorrectPassword
+      run: echo "INCORRECT_PASSWORD=incorrectPassword" >> $GITHUB_ENV
 
     - name: export correct password
-      run: export CORRECT_PASSWORD=secret_sauce
+      run: echo "CORRECT_PASSWORD=secret_sauce" >> $GITHUB_ENV
 
     - name: Run Playwright tests
       run: npx playwright test
+      env:
+        CORRECT_PASSWORD: ${{ env.CORRECT_PASSWORD }}
+        INCORRECT_PASSWORD: ${{ env.INCORRECT_PASSWORD }}
