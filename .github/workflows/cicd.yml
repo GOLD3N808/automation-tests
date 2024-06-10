@@ -1,10 +1,21 @@
-name: Check Runner
+image: mcr.microsoft.com/playwright:focal
+name: install
 
 on: push
 
 jobs:
-  check-runner:
+  installing:
     runs-on: ubuntu-latest
     steps:
-      - name: Check runner name
-        run: echo "This job is running on xd"
+      - name: installing name
+        run: npm install
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: testing
+        run:
+          npm install @playwright/test 
+          npx playwright install
+          export INCORRECT_PASSWORD=incorrectPassword
+          export CORRECT_PASSWORD=secret_sauce
+          npx playwright test
