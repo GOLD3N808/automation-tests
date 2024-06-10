@@ -35,6 +35,7 @@ test('Go to Reset App State', async ({ dashboardPage, cartPage }) => {
     await expect(dashboardPage.dashboardContainer).toBeVisible()
     await expect(dashboardPage.removeButton(1)).toBeHidden()
     await expect(dashboardPage.removeButton(2)).toBeHidden()
+    console.log('xd')
 });
 
 })
