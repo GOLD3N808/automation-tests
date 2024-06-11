@@ -1,10 +1,46 @@
-name: Check Runner
+name: Playwright CI
 
-on: push
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  check-runner:
+  test:
     runs-on: ubuntu-latest
+
+    container:
+      image: mcr.microsoft.com/playwright:focal
+
     steps:
-      - name: Check runner name
-        run: echo "This job is running on xd"
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Install dependencies
+      run: npm install @playwright/test 
+
+    - name: Install dependencies
+      run: npx playwright install
+
+    - name: Export incorrect password
+      run: echo "INCORRECT_PASSWORD=${{ secrets.INCORRECT_PASSWORD }}" >> $GITHUB_ENV
+
+    - name: Export correct password
+      run: echo "CORRECT_PASSWORD=${{ secrets.CORRECT_PASSWORD }}" >> $GITHUB_ENV
+
+    - name: Run Playwright tests
+      run: npx playwright test
+      env:
+        CORRECT_PASSWORD: ${{ env.CORRECT_PASSWORD }}
+        INCORRECT_PASSWORD: ${{ env.INCORRECT_PASSWORD }}
