@@ -1,40 +1,45 @@
-import { Locator, Page } from '@playwright/test'
-import BasePage from '@pages/basePage'
+import { Locator, Page } from '@playwright/test';
+import BasePage from '@pages/basePage';
 
 class CartPage extends BasePage {
-    page: Page
-    yourCartTitle: Locator
-    productElement: Locator
-    continueShoppingButton: Locator
-    cartContainer: Locator
-    numberOfProductInCart: number
-    checkoutButton: Locator
+  page: Page;
+  yourCartTitle: Locator;
+  productElement: Locator;
+  continueShoppingButton: Locator;
+  cartContainer: Locator;
+  numberOfProductInCart: number;
+  checkoutButton: Locator;
 
-constructor(page: Page){
-super(page)
-this.page = page
-this.yourCartTitle = page.locator('[data-test="title"]').getByText('Your Cart')
-this.productElement = page.locator('[data-test="inventory-item"]')
-this.continueShoppingButton = page.locator('[data-test="continue-shopping"]')
-this.cartContainer = page.locator('[data-test="cart-contents-container"]')
-this.checkoutButton = page.locator('[data-test="checkout"]')
-}
+  constructor(page: Page) {
+    super(page);
+    this.page = page;
+    this.yourCartTitle = page
+      .locator('[data-test="title"]')
+      .getByText('Your Cart');
+    this.productElement = page.locator('[data-test="inventory-item"]');
+    this.continueShoppingButton = page.locator(
+      '[data-test="continue-shopping"]',
+    );
+    this.cartContainer = page.locator('[data-test="cart-contents-container"]');
+    this.checkoutButton = page.locator('[data-test="checkout"]');
+  }
 
-private removeButton(numberOfProductInCart){
-    return this.productElement.nth(numberOfProductInCart - 1).getByText('Remove')
-}
+  private removeButton(numberOfProductInCart) {
+    return this.productElement
+      .nth(numberOfProductInCart - 1)
+      .getByText('Remove');
+  }
 
-async backToDashboard() {
-    await this.continueShoppingButton.click()
-}
+  async backToDashboard() {
+    await this.continueShoppingButton.click();
+  }
 
-async removeProduct(numberOfProductInCart) {
-    await this.removeButton(numberOfProductInCart).click()
-}
+  async removeProduct(numberOfProductInCart) {
+    await this.removeButton(numberOfProductInCart).click();
+  }
 
-async goToCheckout() {
-    await this.checkoutButton.click()
+  async goToCheckout() {
+    await this.checkoutButton.click();
+  }
 }
-
-}
-export default CartPage
+export default CartPage;
