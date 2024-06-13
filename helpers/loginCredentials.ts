@@ -1,8 +1,8 @@
 type Login = {
-    [key: string]: string
-}
+  [key: string]: string;
+};
 
 export const user: Login = {
-    correctUsername: 'standard_user',
-    incorrectUsername: 'incorrectUsername',
-}
+  correctUsername: 'standard_user',
+  incorrectUsername: 'incorrectUsername',
+};
