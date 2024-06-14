@@ -3,12 +3,13 @@ import { user } from '@helpers/loginCredentials';
 import { expect } from '@playwright/test';
 
 test.describe('Login to account using valid and invalid data', () => {
+  const dashboardUrl = 'https://www.saucedemo.com/inventory.html';
   const mainUrl = 'https://www.saucedemo.com/';
-
+  
   test.beforeEach(async ({ page }) => {
     await page.goto(mainUrl);
   });
-
+  
   test('Login with empty username and empty password filds', async ({
     loginPage,
     page,
@@ -26,7 +27,7 @@ test.describe('Login to account using valid and invalid data', () => {
   }) => {
     await loginPage.login(
       user['incorrectUsername'],
-      process.env.INCORRECT_PASSWORD,
+      process.env.INCORRECT_PASSWORD
     );
     expect(page.url()).toBe(mainUrl);
     await expect(loginPage.redLightedUsernameField).toBeVisible();
@@ -40,7 +41,7 @@ test.describe('Login to account using valid and invalid data', () => {
   }) => {
     await loginPage.login(
       user['incorrectUsername'],
-      process.env.CORRECT_PASSWORD,
+      process.env.CORRECT_PASSWORD
     );
     expect(page.url()).toBe(mainUrl);
     await expect(loginPage.redLightedUsernameField).toBeVisible();
@@ -54,7 +55,7 @@ test.describe('Login to account using valid and invalid data', () => {
   }) => {
     await loginPage.login(
       user['correctUsername'],
-      process.env.INCORRECT_PASSWORD,
+      process.env.INCORRECT_PASSWORD
     );
     expect(page.url()).toBe(mainUrl);
     await expect(loginPage.redLightedUsernameField).toBeVisible();
@@ -69,9 +70,9 @@ test.describe('Login to account using valid and invalid data', () => {
   }) => {
     await loginPage.login(
       user['correctUsername'],
-      process.env.CORRECT_PASSWORD,
+      process.env.CORRECT_PASSWORD
     );
-    expect(page.url()).toBe('https://www.saucedemo.com/inventory.html');
+    expect(page.url()).toBe(dashboardUrl);
     await expect(dashboardPage.burgerMenuButton).toBeVisible();
   });
 });

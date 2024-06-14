@@ -3,11 +3,12 @@ import { user } from '@helpers/loginCredentials';
 import { expect } from '@playwright/test';
 
 test.describe('Logout from account', () => {
+  const mainUrl = 'https://www.saucedemo.com/';
   test.beforeEach(async ({ loginPage, page }) => {
-    await page.goto('https://www.saucedemo.com/');
+    await page.goto(mainUrl);
     await loginPage.login(
       user['correctUsername'],
-      process.env.CORRECT_PASSWORD,
+      process.env.CORRECT_PASSWORD
     );
   });
 
@@ -17,7 +18,7 @@ test.describe('Logout from account', () => {
     loginPage,
   }) => {
     await dashboardPage.logout();
-    expect(page.url()).toBe('https://www.saucedemo.com/');
+    expect(page.url()).toBe(mainUrl);
     await expect(loginPage.loginButton).toBeVisible();
   });
 
@@ -29,7 +30,7 @@ test.describe('Logout from account', () => {
   }) => {
     await dashboardPage.goToCart();
     await cartPage.logout();
-    expect(page.url()).toBe('https://www.saucedemo.com/');
+    expect(page.url()).toBe(mainUrl);
     await expect(loginPage.loginButton).toBeVisible();
   });
 });
